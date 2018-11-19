@@ -1,0 +1,16 @@
+---
+
+version: '3'
+services:
+  registry:
+    user: "1000:1000"
+    image: registry:2
+    restart: "no"
+    container_name: docker-registry
+    ports:
+      - "5000:5000"
+    volumes:
+      - "./registry/certs:/certs:ro"
+      - "./registry/conf:/etc/docker/registry:ro"
+      - "./registry/storage:/var/lib/registry:rw"
+
